@@ -2,23 +2,23 @@ version: "3.3"
 
 services:
   mysql:
-    container_name: swm-mysql
+    container_name: ecalazaes-mysql
     restart: always
     image: mysql:8.0
     networks:
-      - swmnetwork
+      - ecalazaesnetwork
     ports:
       - "3307:3306"
     volumes:
       - ./volumes/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: senha
-      MYSQL_DATABASE: swm_db
-      MYSQL_USER: swm_user
+      MYSQL_DATABASE: ecalazaes_db
+      MYSQL_USER: ecalazaes_user
       MYSQL_PASSWORD: senha
 
   rabbit:
-    container_name: swm-rabbit
+    container_name: ecalazaes-rabbit
     restart: always
     image: rabbitmq:3-management
     ports:
@@ -27,8 +27,8 @@ services:
     volumes:
       - ./volumes/rabbit:/data
     networks:
-      - swmnetwork
+      - ecalazaesnetwork
 
 networks:
-  swmnetwork:
+  ecalazaesnetwork:
     driver: bridge
